@@ -37,6 +37,9 @@ makeCacheMatrix <- function(x = matrix()) {
     ## getinv() returns the inverse matrix
     getinv() <- function() inv
     
+    list(set = set, get = get, 
+         setinv = setinv, 
+         getinv = getinv)
 }
 
 
