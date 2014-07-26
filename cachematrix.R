@@ -1,25 +1,19 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
-## makeCacgeMatrix is a generator of special matrix
-## which stores two matrices:
+## makeCacgeMatrix is a generator of special matrix which stores two matrices:
 ##      one is the original matrix
 ##      other is the inverse of the matrix
 ##
 ## It has four functions which can be called:
 ##      set(m)      --> input the given matrix and store it
 ##      get()       --> return the stored matrix
-##      setinv(inv) --> calculate inverse matrix of the given matrix and store it
+##      setinv(inv) --> input the inverse matrix of the given matrix and store it
 ##      getinv()    --> return the stored inverse matrix
-
-## when called it return a list of this four functions
+##
+## when called it returns a list of this four functions
 ## By calling each function we can manipulate the stored matrices
 
 makeCacheMatrix <- function(x = matrix()) {
     
-    ## Create the inverse and set its value to NULL by default
+    ## Create the inverse matrix and set its value to NULL by default
     inv <- NULL
     
     ## Declare set function to re-initialize x
@@ -37,23 +31,21 @@ makeCacheMatrix <- function(x = matrix()) {
     ## getinv() returns the inverse matrix
     getinv <- function() inv
     
+    ## the function returns the four functions wrapped in a list
     list(set = set, get = get, 
          setinv = setinv, 
          getinv = getinv)
 }
 
 
-## Write a short comment describing this function
-
-## cacheSolve function take input a special matrix
-## created by make CacheMatrix() function which actually
-## a list of four functions and two underlying matrix.
-
-## cachesolve checks if the inv is already set
+## cacheSolve function takes input a special matrix
+## created by makeCacheMatrix() function which is actually
+## a list of four functions and two underlying matrices.
+## 
+## cacheSolve checks if the inv is already set
 ## if not, then it calculates the inv and sets it.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
     
     ## get the inv matrix from x
     inv <- x$getinv()
