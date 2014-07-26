@@ -42,6 +42,34 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 
+## cacheSolve function take input a special matrix
+## created by make CacheMatrix() function which actually
+## a list of four functions and two underlying matrix.
+
+## cachesolve checks if the inv is already set
+## if not, then it calculates the inv and sets it.
+
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+    
+    ## get the inv matrix from x
+    inv <- x$getinv()
+    
+    ## if inv is not NULL then value of x has not changed
+    ## therefor, cached data will be served
+    if( !is.null(inv) ) {
+        message("getting cached data")
+        return(inv)
+    }
+    
+    ## Otherwise we have to calculate the inverse
+    data <- x$get()
+    inv <- solve(data, ...)
+    
+    ## store the calculated inverse for future use
+    x$setinv(inv)
+    
+    ## return newly calculated inverse
+    inv
+    
 }
